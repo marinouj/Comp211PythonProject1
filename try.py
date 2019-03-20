@@ -5,13 +5,15 @@ file_size = 8
 sorted_file_size = 4
 page_size = buffer_size*4
 sorted_file_number = int(file_size/sorted_file_size)
-
+deb = [0,12,69,78,5,10,86,89]
 def main():
     disk_access = 0
     buffer = []
     file = open("filename.txt", "wb")
     for i in range(int(file_size / buffer_size)):
         buffer.clear()
+        #buffer = deb[buffer_size * i: (buffer_size * i) + buffer_size]
+
         for j in range(buffer_size):                                        #filling buffer with random integers
             buffer.append(random.randint(0, 100))                           #generating a random int grater than zero
         page_of_file = array.array("L", buffer).tobytes()                   #converting buffer to bytes
@@ -69,7 +71,7 @@ def final_sort():
     file_ended = [False for i in range(sorted_file_number)]
     empty_buffer = [False for i in range(sorted_file_number)]
     buffer_pointer = [0 for i in range(sorted_file_number + 1)]
-    final_sorted_file = open("finalSortedFile", "wb")
+    final_sorted_file = open("finalSortedFile.txt", "wb")
     sorted_buffer = [[0 for y in range(buffer_size)]for x in range(sorted_file_number + 1)]
     column = [0 for x in range(sorted_file_number)]
 
@@ -81,13 +83,12 @@ def final_sort():
             column[i] = sorted_buffer[i][buffer_pointer[i]]
 
         position = minimum(column, empty_buffer)
-
         sorted_buffer[sorted_file_number][buffer_pointer[sorted_file_number]] = sorted_buffer[position][buffer_pointer[position]]
         buffer_pointer[position] = buffer_pointer[position] + 1
         buffer_pointer[sorted_file_number] = buffer_pointer[sorted_file_number] + 1
 
         if file_ended[position] and (buffer_pointer[position] == buffer_size):
-            empty_buffer = True
+            empty_buffer[position] = True
             buffer_pointer[position] = buffer_size - 1
 
         if buffer_pointer[sorted_file_number] == buffer_size:
@@ -105,8 +106,11 @@ def final_sort():
 
 
 def minimum(column, has_finished):
-    min = column[0]
-    pos = 0
+    x = 0
+    while x in range(sorted_file_number) and has_finished[x]:
+        x = x + 1
+    min = column[x]
+    pos = x
     for k in range(sorted_file_number):
         if column[k] < min and has_finished[k] is False:
             min = column[k]
