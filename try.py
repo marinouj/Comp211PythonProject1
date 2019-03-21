@@ -1,11 +1,13 @@
 import random
 import array
-buffer_size = 2
-file_size = 8
-sorted_file_size = 4
+buffer_size = 1000
+file_size = 100000
+sorted_file_size = 10000
 page_size = buffer_size*4
+maximum_random_number = 2**16
 sorted_file_number = int(file_size/sorted_file_size)
-deb = [0,12,69,78,5,10,86,89]
+
+
 def main():
     disk_access = 0
     buffer = []
@@ -15,7 +17,7 @@ def main():
         #buffer = deb[buffer_size * i: (buffer_size * i) + buffer_size]
 
         for j in range(buffer_size):                                        #filling buffer with random integers
-            buffer.append(random.randint(0, 100))                           #generating a random int grater than zero
+            buffer.append(random.randint(0, maximum_random_number))                           #generating a random int grater than zero
         page_of_file = array.array("L", buffer).tobytes()                   #converting buffer to bytes
         print(buffer)
         file.write(page_of_file)
@@ -24,6 +26,7 @@ def main():
     print("Disk accesses required to create file: ", disk_access)
     sort()
     final_sort()
+    serial_search()
 
 
 """The sort algorithm is used in order to sort the random generated file into many seperate once.
@@ -103,6 +106,31 @@ def final_sort():
             sorted_buffer[position], file_pointer[position] = get_next_page(file_pointer[position], position)
             buffer_pointer[position] = 0
             file_ended[position] = (file_pointer[position] == sorted_file_size*4)
+    final_sorted_file.close()
+
+
+def serial_search():
+    final_file = open("finalSortedFile.txt", "rb")
+    disk_access = [0 for i in range(40)]
+    for k in range(40):
+        file_pointer = 0
+        key = random.randint(0, maximum_random_number)
+        successful_search = False
+        while file_pointer != file_size * 4 and not successful_search:
+            disk_access[k] = disk_access[k] + 1
+            final_file.seek(file_pointer)
+            page = final_file.read(page_size)
+            file_pointer = final_file.tell()
+            buffer = array.array("L", page).tolist()
+            successful_search = search_number(buffer, key)
+    final_file.close()
+
+
+def search_number(buffer, key):
+    for i in range(buffer_size):
+        if buffer[i] == key :
+            return True
+    return False
 
 
 def minimum(column, has_finished):

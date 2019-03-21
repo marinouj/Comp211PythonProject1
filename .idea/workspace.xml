@@ -13,15 +13,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/try.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="474">
-              <caret line="84" column="8" selection-start-line="84" selection-start-column="8" selection-end-line="84" selection-end-column="8" />
+            <state relative-caret-position="119">
+              <caret line="7" column="52" selection-start-line="7" selection-start-column="52" selection-end-line="7" selection-end-column="52" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
-                <element signature="e#1187#2075#0" />
-                <element signature="e#2202#3014#0" />
-                <element signature="e#3266#3833#0" />
-                <element signature="e#6406#6794#0" />
-                <element signature="e#6861#7065#0" />
+                <element signature="e#1288#2176#0" />
+                <element signature="e#2303#3115#0" />
+                <element signature="e#3367#3934#0" />
+                <element signature="e#3959#5937#0" />
+                <element signature="e#5971#6598#0" />
+                <element signature="e#6089#6189#0" />
+                <element signature="e#5949#6226#0" />
+                <element signature="e#6335#6572#0" />
+                <element signature="e#6610#6998#0" />
+                <element signature="e#7065#7269#0" />
               </folding>
             </state>
           </provider>
@@ -47,10 +52,10 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
-    <option name="width" value="1390" />
-    <option name="height" value="1756" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-7" />
+    <option name="width" value="974" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -156,15 +161,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.09641728" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19551282" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30552545" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30525163" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -201,15 +206,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/try.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
-          <caret line="84" column="8" selection-start-line="84" selection-start-column="8" selection-end-line="84" selection-end-column="8" />
+        <state relative-caret-position="119">
+          <caret line="7" column="52" selection-start-line="7" selection-start-column="52" selection-end-line="7" selection-end-column="52" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#1187#2075#0" />
-            <element signature="e#2202#3014#0" />
-            <element signature="e#3266#3833#0" />
-            <element signature="e#6406#6794#0" />
-            <element signature="e#6861#7065#0" />
+            <element signature="e#1288#2176#0" />
+            <element signature="e#2303#3115#0" />
+            <element signature="e#3367#3934#0" />
+            <element signature="e#3959#5937#0" />
+            <element signature="e#5971#6598#0" />
+            <element signature="e#6089#6189#0" />
+            <element signature="e#5949#6226#0" />
+            <element signature="e#6335#6572#0" />
+            <element signature="e#6610#6998#0" />
+            <element signature="e#7065#7269#0" />
           </folding>
         </state>
       </provider>
