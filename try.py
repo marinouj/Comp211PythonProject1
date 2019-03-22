@@ -1,12 +1,11 @@
 import random
 import array
-buffer_size = 1000
-file_size = 100000
-sorted_file_size = 10000
+buffer_size = 2
+file_size = 8
+sorted_file_size = 4
 page_size = buffer_size*4
-maximum_random_number = 2**16
+maximum_random_number = 10
 sorted_file_number = int(file_size/sorted_file_size)
-
 
 def main():
     disk_access = 0
@@ -27,6 +26,7 @@ def main():
     sort()
     final_sort()
     serial_search()
+
 
 
 """The sort algorithm is used in order to sort the random generated file into many seperate once.
@@ -50,7 +50,7 @@ def write_sorted_array_in_file(sorted_array, i):
         buffer = sorted_array[(buffer_size * j): ((buffer_size * j) + buffer_size)] #Getting a buffer size chunk off of the sorted array
         page = array.array("L", buffer).tobytes()                       #Converting buffer to byte sized page
         sorted_file.write(page)                                         #Writing page in current sorted file
-        print(buffer)
+        #print(buffer)
         disk_access = disk_access + 1                                   #Increasing the disk accesses
     sorted_file.close()                                                 #Closing current sorted file after we filled it
     return disk_access
@@ -74,17 +74,14 @@ def final_sort():
     file_ended = [False for i in range(sorted_file_number)]
     empty_buffer = [False for i in range(sorted_file_number)]
     buffer_pointer = [0 for i in range(sorted_file_number + 1)]
-    final_sorted_file = open("finalSortedFile.txt", "wb")
     sorted_buffer = [[0 for y in range(buffer_size)]for x in range(sorted_file_number + 1)]
     column = [0 for x in range(sorted_file_number)]
 
     for i in range(sorted_file_number):
-        sorted_buffer[i], file_pointer[i] = get_next_page(file_pointer[i], i)
+        sorted_buffer[i], file_pointer[i] = get_next_page(file_pointer[i], generate_file_name(i))
     while file_pointer[sorted_file_number] != file_size*4:
-
         for i in range(sorted_file_number):
             column[i] = sorted_buffer[i][buffer_pointer[i]]
-
         position = minimum(column, empty_buffer)
         sorted_buffer[sorted_file_number][buffer_pointer[sorted_file_number]] = sorted_buffer[position][buffer_pointer[position]]
         buffer_pointer[position] = buffer_pointer[position] + 1
@@ -95,42 +92,47 @@ def final_sort():
             buffer_pointer[position] = buffer_size - 1
 
         if buffer_pointer[sorted_file_number] == buffer_size:
-            print(sorted_buffer[sorted_file_number])
-            page = array.array("L", sorted_buffer[sorted_file_number]).tobytes()
-            final_sorted_file.seek(file_pointer[sorted_file_number])
-            final_sorted_file.write(page)
-            file_pointer[sorted_file_number] = final_sorted_file.tell()
+            #print(sorted_buffer[sorted_file_number])
+            file_pointer[sorted_file_number] = write_next_page(file_pointer[sorted_file_number], sorted_buffer[sorted_file_number], "finalSortedFile.txt")
             buffer_pointer[sorted_file_number] = 0
 
         if buffer_pointer[position] == buffer_size:
-            sorted_buffer[position], file_pointer[position] = get_next_page(file_pointer[position], position)
+            sorted_buffer[position], file_pointer[position] = get_next_page(file_pointer[position], generate_file_name(position))
             buffer_pointer[position] = 0
             file_ended[position] = (file_pointer[position] == sorted_file_size*4)
-    final_sorted_file.close()
 
 
 def serial_search():
-    final_file = open("finalSortedFile.txt", "rb")
     disk_access = [0 for i in range(40)]
     for k in range(40):
-        file_pointer = 0
         key = random.randint(0, maximum_random_number)
-        successful_search = False
-        while file_pointer != file_size * 4 and not successful_search:
-            disk_access[k] = disk_access[k] + 1
-            final_file.seek(file_pointer)
-            page = final_file.read(page_size)
-            file_pointer = final_file.tell()
-            buffer = array.array("L", page).tolist()
-            successful_search = search_number(buffer, key)
-    final_file.close()
+        disk_access[k] = search_in_file_serial("finalSortedFile.txt", key)
+    print(average(disk_access))
+
+
+def search_in_file_serial(final_file, key):
+    disk_access = 0
+    successful_search = False
+    file_pointer = 0
+    while file_pointer != file_size * 4 and not successful_search:
+        disk_access = disk_access + 1
+        buffer, file_pointer = get_next_page(file_pointer, final_file)
+        successful_search = search_number(buffer, key)
+    return disk_access
 
 
 def search_number(buffer, key):
     for i in range(buffer_size):
-        if buffer[i] == key :
+        if buffer[i] == key:
             return True
     return False
+
+
+def average(arr):
+    s = 0
+    for i in range(len(arr)):
+        s = s + arr[i]
+    return s/len(arr)
 
 
 def minimum(column, has_finished):
@@ -146,8 +148,22 @@ def minimum(column, has_finished):
     return pos
 
 
-def get_next_page(fp, i):     #loading new page from sorted files when needed and turning it into int
-    sorted_file = open("filename" + str(i) + ".txt", "rb")
+def generate_file_name(i):
+    return "filename" + str(i) + ".txt"
+
+
+def write_next_page(fp, buffer, filename):
+    file = open(filename, "wb")
+    page = array.array("L", buffer).tobytes()
+    file.seek(fp)
+    file.write(page)
+    file_pointer = file.tell()
+    file.close()
+    return file_pointer
+
+
+def get_next_page(fp, filename):     #loading new page from sorted files when needed and turning it into int
+    sorted_file = open(filename, "rb")
     sorted_file.seek(fp)
     page = sorted_file.read(page_size)
     fp = sorted_file.tell()

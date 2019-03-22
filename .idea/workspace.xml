@@ -13,18 +13,18 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/try.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
+            <state relative-caret-position="-1685">
               <caret line="7" column="52" selection-start-line="7" selection-start-column="52" selection-end-line="7" selection-end-column="52" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
                 <element signature="e#1288#2176#0" />
                 <element signature="e#2303#3115#0" />
-                <element signature="e#3367#3934#0" />
-                <element signature="e#3959#5937#0" />
-                <element signature="e#5971#6598#0" />
                 <element signature="e#6089#6189#0" />
+                <element signature="e#6798#6869#0" />
                 <element signature="e#5949#6226#0" />
-                <element signature="e#6335#6572#0" />
+                <element signature="e#7566#7594#0" />
+                <element signature="e#7328#7495#0" />
+                <element signature="e#7762#7999#0" />
                 <element signature="e#6610#6998#0" />
                 <element signature="e#7065#7269#0" />
               </folding>
@@ -40,6 +40,11 @@
         <option value="Python Script" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>pri</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -168,7 +173,7 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32932165" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30525163" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -206,18 +211,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/try.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
+        <state relative-caret-position="-1685">
           <caret line="7" column="52" selection-start-line="7" selection-start-column="52" selection-end-line="7" selection-end-column="52" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
             <element signature="e#1288#2176#0" />
             <element signature="e#2303#3115#0" />
-            <element signature="e#3367#3934#0" />
-            <element signature="e#3959#5937#0" />
-            <element signature="e#5971#6598#0" />
             <element signature="e#6089#6189#0" />
+            <element signature="e#6798#6869#0" />
             <element signature="e#5949#6226#0" />
-            <element signature="e#6335#6572#0" />
+            <element signature="e#7566#7594#0" />
+            <element signature="e#7328#7495#0" />
+            <element signature="e#7762#7999#0" />
             <element signature="e#6610#6998#0" />
             <element signature="e#7065#7269#0" />
           </folding>
