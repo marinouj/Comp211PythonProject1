@@ -14,11 +14,10 @@ def main():
     for i in range(int(file_size / buffer_size)):
         buffer.clear()
         #buffer = deb[buffer_size * i: (buffer_size * i) + buffer_size]
-
         for j in range(buffer_size):                                        #filling buffer with random integers
-            buffer.append(random.randint(0, maximum_random_number))                           #generating a random int grater than zero
+            buffer.append(random.randint(0, maximum_random_number))         #generating a random int grater than zero
         page_of_file = array.array("L", buffer).tobytes()                   #converting buffer to bytes
-        print(buffer)
+        #print(buffer)
         file.write(page_of_file)
         disk_access = disk_access + 1
     file.close()
@@ -26,7 +25,6 @@ def main():
     sort()
     final_sort()
     serial_search()
-
 
 
 """The sort algorithm is used in order to sort the random generated file into many seperate once.
@@ -37,8 +35,9 @@ def sort():
     file = open("filename.txt", "rb")
     for i in range(int(file_size / sorted_file_size)):                  #For loop that repeats the proccess for as many sorted files as we need
         sorted_array, da = read_sorted_array_from_file(file)            #Loading enough pages to fill the sorted array
-        quick_sort(sorted_array, 0, sorted_file_size - 1)               #sorting the array using quicksort algorithm
-        sorting_disk_access_counter = sorting_disk_access_counter + da + write_sorted_array_in_file(sorted_array, i)  #Converting the sorted array to bytes and saving it in a new file    file.close()
+        quick_sort(sorted_array, 0, sorted_file_size - 1)               #Sorting the array using quicksort algorithm
+        sorting_disk_access_counter = sorting_disk_access_counter + da + write_sorted_array_in_file(sorted_array, i)  #Converting the sorted array to bytes and saving it in a new file
+    file.close()
     print("Disk accesses required to sort the file into many separate once: ", sorting_disk_access_counter)
 
 
@@ -56,8 +55,8 @@ def write_sorted_array_in_file(sorted_array, i):
     return disk_access
 
 
-"""Reading an array that has the length of a sorted file from the random file. To achieve this we read repetitively
-    a page from the file, convert it to buffer (int[]) and add it to the sorted array."""
+"""Reading an array that has the length of a sorted file from the random file. To achieve this we read 
+    repetitively a page from the file, convert it to buffer (int[]) and add it to the sorted array."""
 def read_sorted_array_from_file(file):
     disk_access = 0
     sorted_array = []
@@ -69,6 +68,11 @@ def read_sorted_array_from_file(file):
     return sorted_array, disk_access
 
 
+"""This function merges the individual sorted files to one final sorted file. It loads a page from every 
+    single one of the sorted files. It reads the buffer numbers serially it finds the smaller it saves it
+    to an other buffer and it moves the buffer pointer to the next number. When a buffer is empty it gets
+    the next page from the corresponding file. If the buffer where we are saving numbers is full we write
+    the to the final file and empty the buffer."""
 def final_sort():
     file_pointer = [0 for i in range(sorted_file_number+1)]
     file_ended = [False for i in range(sorted_file_number)]
@@ -83,7 +87,8 @@ def final_sort():
         for i in range(sorted_file_number):
             column[i] = sorted_buffer[i][buffer_pointer[i]]
         position = minimum(column, empty_buffer)
-        sorted_buffer[sorted_file_number][buffer_pointer[sorted_file_number]] = sorted_buffer[position][buffer_pointer[position]]
+        sorted_buffer[sorted_file_number][buffer_pointer[sorted_file_number]] = \
+            sorted_buffer[position][buffer_pointer[position]]
         buffer_pointer[position] = buffer_pointer[position] + 1
         buffer_pointer[sorted_file_number] = buffer_pointer[sorted_file_number] + 1
 
@@ -93,15 +98,18 @@ def final_sort():
 
         if buffer_pointer[sorted_file_number] == buffer_size:
             #print(sorted_buffer[sorted_file_number])
-            file_pointer[sorted_file_number] = write_next_page(file_pointer[sorted_file_number], sorted_buffer[sorted_file_number], "finalSortedFile.txt")
+            file_pointer[sorted_file_number] = \
+                write_next_page(file_pointer[sorted_file_number], sorted_buffer[sorted_file_number], "finalSortedFile.txt")
             buffer_pointer[sorted_file_number] = 0
 
         if buffer_pointer[position] == buffer_size:
-            sorted_buffer[position], file_pointer[position] = get_next_page(file_pointer[position], generate_file_name(position))
+            sorted_buffer[position], file_pointer[position] = \
+                get_next_page(file_pointer[position], generate_file_name(position))
             buffer_pointer[position] = 0
             file_ended[position] = (file_pointer[position] == sorted_file_size*4)
 
 
+"""Algorithm used to search serially 40 random numbers in the sorted file"""
 def serial_search():
     disk_access = [0 for i in range(40)]
     for k in range(40):
@@ -110,6 +118,7 @@ def serial_search():
     print(average(disk_access))
 
 
+"""Algorithm used to search serially each random number in the sorted file"""
 def search_in_file_serial(final_file, key):
     disk_access = 0
     successful_search = False
@@ -121,6 +130,7 @@ def search_in_file_serial(final_file, key):
     return disk_access
 
 
+"""Algorithm used to search each random numbers in the buffer"""
 def search_number(buffer, key):
     for i in range(buffer_size):
         if buffer[i] == key:
