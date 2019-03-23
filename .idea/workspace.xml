@@ -13,12 +13,33 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/try.py">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="339">
               <caret line="97" column="41" selection-start-line="97" selection-start-column="41" selection-end-line="97" selection-end-column="41" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
                 <element signature="e#4382#4770#0" />
                 <element signature="e#4837#5041#0" />
+=======
+            <state relative-caret-position="1019">
+              <caret line="133" selection-start-line="133" selection-end-line="133" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+                <element signature="e#1311#2267#0" />
+                <element signature="e#2341#3154#0" />
+                <element signature="e#3406#3973#0" />
+                <element signature="e#3998#5818#0" />
+                <element signature="e#5846#6068#0" />
+                <element signature="e#6119#6439#0" />
+                <element signature="e#6478#6576#0" />
+                <element signature="e#6601#6681#0" />
+                <element signature="e#6723#7000#0" />
+                <element signature="e#7034#7069#0" />
+                <element signature="e#7630#7814#0" />
+                <element signature="e#7419#7636#0" />
+                <element signature="e#7674#8062#0" />
+                <element signature="e#8129#8333#0" />
+>>>>>>> 4c79716201947dc46e64ab7df738eb86a3bae925
               </folding>
             </state>
           </provider>
@@ -33,6 +54,11 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>pri</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -45,9 +71,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
-    <option name="width" value="1390" />
-    <option name="height" value="1756" />
+    <option name="x" value="-7" />
+    <option name="width" value="974" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -153,14 +179,23 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
     <frame x="-6" y="-6" width="1381" height="885" extended-state="6" />
+=======
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+>>>>>>> 4c79716201947dc46e64ab7df738eb86a3bae925
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.09665427" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
+<<<<<<< HEAD
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.30596027" />
+=======
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32827735" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.30444205" />
+>>>>>>> 4c79716201947dc46e64ab7df738eb86a3bae925
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -183,8 +218,6 @@
     <entry file="file://$PROJECT_DIR$/filename8.txt" />
     <entry file="file://$PROJECT_DIR$/filename9.txt" />
     <entry file="file://$PROJECT_DIR$/filename7.txt" />
-    <entry file="file://$PROJECT_DIR$/filename1.txt" />
-    <entry file="file://$PROJECT_DIR$/filename0.txt" />
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="316">
@@ -192,17 +225,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/filename0.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/filename1.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/finalSortedFile.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/filename.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/try.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="339">
           <caret line="97" column="41" selection-start-line="97" selection-start-column="41" selection-end-line="97" selection-end-column="41" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
             <element signature="e#4382#4770#0" />
             <element signature="e#4837#5041#0" />
+=======
+        <state relative-caret-position="1019">
+          <caret line="133" selection-start-line="133" selection-end-line="133" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#1311#2267#0" />
+            <element signature="e#2341#3154#0" />
+            <element signature="e#3406#3973#0" />
+            <element signature="e#3998#5818#0" />
+            <element signature="e#5846#6068#0" />
+            <element signature="e#6119#6439#0" />
+            <element signature="e#6478#6576#0" />
+            <element signature="e#6601#6681#0" />
+            <element signature="e#6723#7000#0" />
+            <element signature="e#7034#7069#0" />
+            <element signature="e#7630#7814#0" />
+            <element signature="e#7419#7636#0" />
+            <element signature="e#7674#8062#0" />
+            <element signature="e#8129#8333#0" />
+>>>>>>> 4c79716201947dc46e64ab7df738eb86a3bae925
           </folding>
         </state>
       </provider>
