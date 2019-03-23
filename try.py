@@ -83,7 +83,6 @@ def final_sort():
     buffer_pointer = [0 for i in range(sorted_file_number + 1)]
     sorted_buffer = [[0 for y in range(buffer_size)]for x in range(sorted_file_number + 1)]
     column = [0 for x in range(sorted_file_number)]
-    final_file = open(final_sorted_name, "wb")
     for i in range(sorted_file_number):
         sorted_buffer[i], file_pointer[i] = get_next_page(file_pointer[i], generate_file_name(i))
     while file_pointer[sorted_file_number] != file_size*4:
@@ -101,7 +100,7 @@ def final_sort():
 
         if buffer_pointer[sorted_file_number] == buffer_size:
             file_pointer[sorted_file_number] = \
-                write_next_page(file_pointer[sorted_file_number], sorted_buffer[sorted_file_number], final_file)
+                write_next_page(file_pointer[sorted_file_number], sorted_buffer[sorted_file_number], final_sorted_name)
             buffer_pointer[sorted_file_number] = 0
 
         if buffer_pointer[position] == buffer_size:
@@ -109,7 +108,6 @@ def final_sort():
                 get_next_page(file_pointer[position], generate_file_name(position))
             buffer_pointer[position] = 0
             file_ended[position] = (file_pointer[position] == sorted_file_size*4)
-    final_file.close()
 
 
 def print_file(filename):
@@ -232,12 +230,13 @@ def generate_file_name(i):
 
 
 """We use this function to write a page of a file"""
-def write_next_page(fp, buffer, final_file):
-    file = final_file
+def write_next_page(fp, buffer, filename):
+    file = open(filename, "ab")
     page = array.array("L", buffer).tobytes()
     file.seek(fp)
     file.write(page)
     file_pointer = file.tell()
+    file.close()
     return file_pointer
 
 
