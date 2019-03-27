@@ -10,25 +10,29 @@ sorted_file_number = int(file_size/sorted_file_size)
 final_sorted_name = "finalSortedFile.txt"
 
 def main():
-    disk_access = 0
-    buffer = []
-    file = open("filename.txt", "wb")
-    for i in range(int(file_size / buffer_size)):
-        buffer.clear()
-        #buffer = deb[buffer_size * i: (buffer_size * i) + buffer_size]
-        for j in range(buffer_size):                                        #filling buffer with random integers
-            buffer.append(random.randint(0, maximum_random_number))         #generating a random int grater than zero
-        page_of_file = array.array("L", buffer).tobytes()                   #converting buffer to bytes
-        #print(buffer)
-        file.write(page_of_file)
-        disk_access = disk_access + 1
-    file.close()
-    print("Disk accesses required to create file: ", disk_access)
+    create_file()
     sort()
     final_sort()
     #print_file(final_sorted_name)
     serial_search()
     binary_search()
+
+
+def create_file():
+    disk_access = 0
+    buffer = []
+    file = open("filename.txt", "wb")
+    for i in range(int(file_size / buffer_size)):
+        buffer.clear()
+        # buffer = deb[buffer_size * i: (buffer_size * i) + buffer_size]
+        for j in range(buffer_size):  # filling buffer with random integers
+            buffer.append(random.randint(0, maximum_random_number))  # generating a random int grater than zero
+        page_of_file = array.array("L", buffer).tobytes()  # converting buffer to bytes
+        # print(buffer)
+        file.write(page_of_file)
+        disk_access = disk_access + 1
+    file.close()
+    print("Disk accesses required to create file: ", disk_access)
 
 
 """The sort algorithm is used in order to sort the random generated file into many seperate once.
