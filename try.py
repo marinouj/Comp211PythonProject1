@@ -39,7 +39,7 @@ def create_file():
     We read using the buffer array enough elements from the random file to fill one of the sorted files.
     We sort that array using the quick sort algorithm amd thn we write it in one of the empty sorted files"""
 def sort():
-    sorting_disk_access_counter = 0                                     #Variable used to keep track of how many disk accesses we needed while executing the algorithm
+    sorting_disk_access_counter = 0                                     #how many disk accesses we needed while executing the algorithm
     file_pointer = 0
     #file = open("filename.txt", "rb")
     for i in range(int(file_size / sorted_file_size)):                  #For loop that repeats the proccess for as many sorted files as we need
